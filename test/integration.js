@@ -51,4 +51,19 @@ describe('Integration', function () {
 
   });
 
+  describe('.append()', function () {
+
+    it('should successfully add a value to the right/end of a list', function (done) {
+
+      redis.append('otto-test-list', 'otto-test-value', function (error, result) {
+        (error === null).should.equal(true);
+        // Re-enable when we remove from list
+        //result.should.equal(1);
+        done();
+      });
+
+    });
+
+  });
+
 });
