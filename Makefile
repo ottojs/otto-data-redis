@@ -18,7 +18,6 @@ install:
 delint:
 	# Delint Files with JSHint
 	./node_modules/jshint/bin/jshint \
-		app/ \
 		lib/ \
 		test/
 
