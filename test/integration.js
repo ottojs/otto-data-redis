@@ -23,4 +23,18 @@ describe('Integration', function () {
 
   });
 
+  describe('.read()', function () {
+
+    it('should successfully read a key/value pair', function (done) {
+
+      redis.read('otto-test-key', function (error, result) {
+        (error === null).should.equal(true);
+        result.should.equal('otto-test-value');
+        done();
+      });
+
+    });
+
+  });
+
 });
