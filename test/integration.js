@@ -37,4 +37,18 @@ describe('Integration', function () {
 
   });
 
+  describe('.delete()', function () {
+
+    it('should successfully delete a key/value pair', function (done) {
+
+      redis.delete('otto-test-key', function (error, result) {
+        (error === null).should.equal(true);
+        result.should.equal(1);
+        done();
+      });
+
+    });
+
+  });
+
 });
