@@ -7,6 +7,10 @@ require('should');
 // Subject
 var redis = require('../lib/index.js');
 
+function cleanup (key, done) {
+  redis.delete(key, done);
+};
+
 describe('Integration', function () {
 
   describe('.save()', function () {
@@ -53,15 +57,20 @@ describe('Integration', function () {
 
   describe('.append()', function () {
 
-    it('should successfully add a value to the right/end of a list', function (done) {
-
+    it('should be able to add a value to the right/end of a list', function (done) {
       redis.append('otto-test-list', 'otto-test-value', function (error, result) {
         (error === null).should.equal(true);
-        // Re-enable when we remove from list
-        //result.should.equal(1);
-        done();
+        result.should.equal(1);
+        cleanup('otto-test-list', done);
       });
+    });
 
+    it('should be able to add multiple values to the right/end of a list', function (done) {
+      redis.append('otto-test-list', ['one', 'two', 'three'], function (error, result) {
+        (error === null).should.equal(true);
+        result.should.equal(3);
+        cleanup('otto-test-list', done);
+      });
     });
 
   });
