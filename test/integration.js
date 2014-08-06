@@ -9,7 +9,7 @@ var redis = require('../lib/index.js');
 
 function cleanup (key, done) {
   redis.delete(key, done);
-};
+}
 
 describe('Integration', function () {
 
@@ -70,6 +70,38 @@ describe('Integration', function () {
         (error === null).should.equal(true);
         result.should.equal(3);
         cleanup('otto-test-list', done);
+      });
+    });
+
+  });
+
+  describe('.front()', function () {
+
+    it('should return null when no elements are in the list', function (done) {
+      redis.front('otto-test-list', function (error, result) {
+        (error === null).should.equal(true);
+        (result === null).should.equal(true);
+        cleanup('otto-test-list', done);
+      });
+    });
+
+    it('should return a list item when the list is not empty', function (done) {
+      redis.append('otto-test-list', 'item', function (error, result) {
+        redis.front('otto-test-list', function (error, result) {
+          (error === null).should.equal(true);
+          result.should.equal('item');
+          cleanup('otto-test-list', done);
+        });
+      });
+    });
+
+    it('should return the first list item when the list has multiple items', function (done) {
+      redis.append('otto-test-list', ['one', 'two', 'three'], function (error, result) {
+        redis.front('otto-test-list', function (error, result) {
+          (error === null).should.equal(true);
+          result.should.equal('one');
+          cleanup('otto-test-list', done);
+        });
       });
     });
 
