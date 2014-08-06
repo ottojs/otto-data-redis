@@ -9,11 +9,11 @@ var method_front = require('../lib/method.front.js');
 
 describe('.front()', function () {
 
-  it('should call client.lpop() with provided key', function () {
+  it('should call client.rpop() with provided key', function () {
 
     // Generate
     var front = method_front({
-      lpop : function (key) {
+      rpop : function (key) {
         key.should.be.type('string').and.equal('foo');
       }
     });
@@ -27,7 +27,7 @@ describe('.front()', function () {
 
     // Generate
     var front = method_front({
-      lpop : function (key, next) {
+      rpop : function (key, next) {
         called = true;
         next();
       }
@@ -42,7 +42,7 @@ describe('.front()', function () {
 
     // Generate
     var front = method_front({
-      lpop : function (key, next) {
+      rpop : function (key, next) {
         next(undefined, 'Read Result');
       }
     });

@@ -9,11 +9,11 @@ var method_append = require('../lib/method.append.js');
 
 describe('.append()', function () {
 
-  it('should call client.rpush() with provided key', function () {
+  it('should call client.lpush() with provided key', function () {
 
     // Generate
     var append = method_append({
-      rpush : function (key) {
+      lpush : function (key) {
         key.should.be.type('string').and.equal('foo');
       }
     });
@@ -21,11 +21,11 @@ describe('.append()', function () {
 
   });
 
-  it('should call client.rpush() with provided value', function () {
+  it('should call client.lpush() with provided value', function () {
 
     // Generate
     var append = method_append({
-      rpush : function (key, value) {
+      lpush : function (key, value) {
         value.should.be.type('string').and.equal('bar');
       }
     });
@@ -39,7 +39,7 @@ describe('.append()', function () {
 
     // Generate
     var append = method_append({
-      rpush : function (key, value, next) {
+      lpush : function (key, value, next) {
         called = true;
         next();
       }
@@ -54,7 +54,7 @@ describe('.append()', function () {
 
     // Generate
     var append = method_append({
-      rpush : function (key, value, next) {
+      lpush : function (key, value, next) {
         next(undefined, 'Append Result');
       }
     });
