@@ -16,13 +16,11 @@ describe('Integration', function () {
   describe('.save()', function () {
 
     it('should successfully save a key/value pair', function (done) {
-
-      redis.save('otto-test-key', 'otto-test-value', function (error, result) {
+      redis.save('otto-test-save', 'save-me', function (error, result) {
         (error === null).should.equal(true);
         result.should.equal('OK');
-        done();
+        cleanup('otto-test-save', done);
       });
-
     });
 
   });
@@ -30,11 +28,12 @@ describe('Integration', function () {
   describe('.read()', function () {
 
     it('should successfully read a key/value pair', function (done) {
-
-      redis.read('otto-test-key', function (error, result) {
-        (error === null).should.equal(true);
-        result.should.equal('otto-test-value');
-        done();
+      redis.save('otto-test-read', 'read-me', function (error, result) {
+        redis.read('otto-test-read', function (error, result) {
+          (error === null).should.equal(true);
+          result.should.equal('read-me');
+          cleanup('otto-test-read', done);
+        });
       });
 
     });
@@ -44,13 +43,13 @@ describe('Integration', function () {
   describe('.delete()', function () {
 
     it('should successfully delete a key/value pair', function (done) {
-
-      redis.delete('otto-test-key', function (error, result) {
-        (error === null).should.equal(true);
-        result.should.equal(1);
-        done();
+      redis.save('otto-test-delete', 'delete-me', function (error, result) {
+        redis.delete('otto-test-delete', function (error, result) {
+          (error === null).should.equal(true);
+          result.should.equal(1);
+          cleanup('otto-test-delete', done);
+        });
       });
-
     });
 
   });
