@@ -64,4 +64,33 @@ describe('.save()', function () {
 
   });
 
+  it('should leave value of type string untouched', function () {
+
+    // Generate
+    var save = method_save({
+      set : function (key, value, next) { next(undefined, value); }
+    });
+
+    save('string', 'im-a-string!', function (error, value) {
+      value.should.be.type('string').and.equal('im-a-string!');
+    });
+
+  });
+
+  it('should convert value of type object to JSON string', function () {
+
+    // Generate
+    var save = method_save({
+      set : function (key, value, next) { next(undefined, value); }
+    });
+    save('object', {
+      some   : 'properties',
+      to     : 'convert',
+      nested : { properties : 'too' }
+    }, function (error, value) {
+      value.should.be.type('string').and.equal('{"some":"properties","to":"convert","nested":{"properties":"too"}}');
+    });
+
+  });
+
 });
