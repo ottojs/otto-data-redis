@@ -91,7 +91,7 @@ describe('.read()', function () {
       result.should.be.type('object').and.eql({
         json : 'object',
         with : {
-          nested :'values'
+          nested : 'values'
         }
       });
     });

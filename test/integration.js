@@ -106,4 +106,28 @@ describe('Integration', function () {
 
   });
 
+  describe('Save/Read object', function () {
+
+    it('should return an object', function (done) {
+      redis.save('otto-test-object', {
+        json : 'object',
+        with : {
+          nested :'values'
+        }
+      }, function (error, result) {
+        redis.read('otto-test-object', function (error, result) {
+          (error === null).should.equal(true);
+          result.should.eql({
+            json : 'object',
+            with : {
+              nested : 'values'
+            }
+          });
+          cleanup('otto-test-object', done);
+        });
+      });
+    });
+
+  });
+
 });
