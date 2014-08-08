@@ -102,6 +102,30 @@ describe('Integration', function () {
 
   });
 
+  describe('.ismember()', function () {
+
+    it('should return true when value is a member of set', function (done) {
+      redis.add('otto-test-ismember', ['one', 'two', 'three'], function (error, result) {
+        redis.ismember('otto-test-ismember', 'two', function (error, ismember) {
+          (error === null).should.equal(true);
+          ismember.should.equal(true);
+          cleanup('otto-test-ismember', done);
+        });
+      });
+    });
+
+    it('should return false when value is not a member of set', function (done) {
+      redis.add('otto-test-ismember', ['one', 'two', 'three'], function (error, result) {
+        redis.ismember('otto-test-ismember', 'five', function (error, ismember) {
+          (error === null).should.equal(true);
+          ismember.should.equal(false);
+          cleanup('otto-test-ismember', done);
+        });
+      });
+    });
+
+  });
+
   describe('.append()', function () {
 
     it('should be able to add a value to the right/end of a list', function (done) {
