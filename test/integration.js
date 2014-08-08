@@ -64,6 +64,14 @@ describe('Integration', function () {
       });
     });
 
+    it('should be able to add multiple values to the key set', function (done) {
+      redis.append('otto-test-add', ['one', 'two', 'three'], function (error, result) {
+        (error === null).should.equal(true);
+        result.should.equal(3);
+        cleanup('otto-test-add', done);
+      });
+    });
+
   });
 
   describe('.remove()', function () {
