@@ -1,6 +1,6 @@
 {
   "name" : "otto-data-redis",
-  "version" : "0.0.7",
+  "version" : "0.0.8",
   "repository" : "https://github.com/ottojs/otto-data-redis.git",
   "main" : "./lib/index.js",
   "dependencies" : {
