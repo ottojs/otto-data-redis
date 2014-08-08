@@ -54,6 +54,18 @@ describe('Integration', function () {
 
   });
 
+  describe('.add()', function () {
+
+    it('should successfully add a value to key set', function (done) {
+      redis.add('otto-test-add', 'member-value', function (error, result) {
+        (error === null).should.equal(true);
+        result.should.equal(1);
+        cleanup('otto-test-add', done);
+      });
+    });
+
+  });
+
   describe('.append()', function () {
 
     it('should be able to add a value to the right/end of a list', function (done) {
