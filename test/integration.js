@@ -88,6 +88,20 @@ describe('Integration', function () {
 
   });
 
+  describe('.members()', function () {
+
+    it('should list all member values for a set key', function (done) {
+      redis.add('otto-test-members', ['one', 'two', 'three'], function (error, result) {
+        redis.members('otto-test-members', function (error, members) {
+          (error === null).should.equal(true);
+          members.should.containDeep(['one', 'two', 'three']);
+          cleanup('otto-test-members', done);
+        });
+      });
+    });
+
+  });
+
   describe('.append()', function () {
 
     it('should be able to add a value to the right/end of a list', function (done) {
