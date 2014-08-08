@@ -66,6 +66,20 @@ describe('Integration', function () {
 
   });
 
+  describe('.remove()', function () {
+
+    it('should successfully remove a value from a set key', function (done) {
+      redis.add('otto-test-remove', 'delete-me', function (error, result) {
+        redis.remove('otto-test-remove', 'delete-me', function (error, result) {
+          (error === null).should.equal(true);
+          result.should.equal(1);
+          cleanup('otto-test-remove', done);
+        });
+      });
+    });
+
+  });
+
   describe('.append()', function () {
 
     it('should be able to add a value to the right/end of a list', function (done) {
