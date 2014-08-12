@@ -5,7 +5,7 @@
 require('should');
 
 // Subject
-var method_remove = require('../lib/method.remove.js');
+var method_remove = require('../../lib/method.remove.js');
 
 describe('.remove()', function () {
 

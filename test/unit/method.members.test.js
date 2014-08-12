@@ -5,7 +5,7 @@
 require('should');
 
 // Subject
-var method_members = require('../lib/method.members.js');
+var method_members = require('../../lib/method.members.js');
 
 describe('.members()', function () {
 

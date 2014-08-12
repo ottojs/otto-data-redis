@@ -5,7 +5,7 @@
 require('should');
 
 // Subject
-var method_delete = require('../lib/method.delete.js');
+var method_delete = require('../../lib/method.delete.js');
 
 describe('.delete()', function () {
 

@@ -5,7 +5,7 @@
 require('should');
 
 // Subject
-var method_add = require('../lib/method.add.js');
+var method_add = require('../../lib/method.add.js');
 
 describe('.add()', function () {
 

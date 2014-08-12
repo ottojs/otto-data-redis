@@ -5,7 +5,7 @@
 require('should');
 
 // Subject
-var method_ismember = require('../lib/method.ismember.js');
+var method_ismember = require('../../lib/method.ismember.js');
 
 describe('.ismember()', function () {
 

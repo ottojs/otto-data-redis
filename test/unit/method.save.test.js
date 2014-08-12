@@ -5,7 +5,7 @@
 require('should');
 
 // Subject
-var method_save = require('../lib/method.save.js');
+var method_save = require('../../lib/method.save.js');
 
 describe('.save()', function () {
 
