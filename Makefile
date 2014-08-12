@@ -14,15 +14,15 @@ install:
 	# Install Node.js Modules
 	npm install
 
+.PHONY: test
+test: delint unit integration
+
 .PHONY: delint
 delint:
 	# Delint Files with JSHint
 	./node_modules/jshint/bin/jshint \
 		lib/ \
 		test/
-
-.PHONY: test
-test: unit integration
 
 .PHONY: unit
 unit:
