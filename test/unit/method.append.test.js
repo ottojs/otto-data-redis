@@ -115,15 +115,12 @@ describe('.append()', function () {
         to     : 'convert',
         nested : { properties : 'too' }
       },
-      {
-        one   : 'two',
-        three : 'four'
-      }
+      'just-a-string'
     ], function (error, value) {
       value.should.be.instanceof(Array).with.length(3);
       value[0].should.be.type('string').and.equal('object');
       value[1].should.be.type('string').and.equal('{"some":"properties","to":"convert","nested":{"properties":"too"}}');
-      value[2].should.be.type('string').and.equal('{"one":"two","three":"four"}');
+      value[2].should.be.type('string').and.equal('just-a-string');
     });
 
   });

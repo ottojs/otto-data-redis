@@ -78,4 +78,32 @@ describe('.ismember()', function () {
 
   });
 
+  it('should return true when value is a member', function () {
+
+    // Generate
+    var ismember = method_ismember({
+      sismember : function (key, value, next) {
+        next(undefined, 1);
+      }
+    });
+    ismember('foo', 'bar', function (error, result) {
+      result.should.be.type('boolean').and.equal(true);
+    });
+
+  });
+
+  it('should return false when value is not a member', function () {
+
+    // Generate
+    var ismember = method_ismember({
+      sismember : function (key, value, next) {
+        next(undefined, 0);
+      }
+    });
+    ismember('foo', 'bar', function (error, result) {
+      result.should.be.type('boolean').and.equal(false);
+    });
+
+  });
+
 });
