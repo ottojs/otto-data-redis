@@ -144,22 +144,6 @@ describe('Integration', function () {
       });
     });
 
-    it('should convert value of type object to JSON string', function (done) {
-      redis.append('otto-test-list', {
-        some   : 'properties',
-        to     : 'convert',
-        nested : { properties : 'too' }
-      }, function (error, result) {
-        (error === null).should.equal(true);
-        result.should.equal(1);
-        redis.front('otto-test-list', function (error, item) {
-          (error === null).should.equal(true);
-          item.should.be.type('string').and.equal('{"some":"properties","to":"convert","nested":{"properties":"too"}}');
-          cleanup('otto-test-list', done);
-        });
-      });
-    });
-
   });
 
   describe('.front()', function () {
@@ -212,6 +196,30 @@ describe('Integration', function () {
             }
           });
           cleanup('otto-test-object', done);
+        });
+      });
+    });
+
+  });
+
+  describe('Append/Front object', function () {
+
+    it('should be able to append an object and read it back', function (done) {
+      redis.append('otto-test-list', {
+        some   : 'properties',
+        to     : 'convert',
+        nested : { properties : 'too' }
+      }, function (error, result) {
+        (error === null).should.equal(true);
+        result.should.equal(1);
+        redis.front('otto-test-list', function (error, item) {
+          (error === null).should.equal(true);
+          item.should.be.type('object').and.eql({
+            some   : 'properties',
+            to     : 'convert',
+            nested : { properties : 'too' }
+          });
+          cleanup('otto-test-list', done);
         });
       });
     });
