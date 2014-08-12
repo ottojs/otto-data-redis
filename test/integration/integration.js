@@ -5,7 +5,7 @@
 require('should');
 
 // Subject
-var redis = require('../lib/index.js');
+var redis = require('../../lib/index.js');
 
 function cleanup (key, done) {
   redis.delete(key, done);

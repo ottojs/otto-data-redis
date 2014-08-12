@@ -5,7 +5,7 @@
 require('should');
 
 // Subject
-var redis_connection = require('../lib/connection.js');
+var redis_connection = require('../../lib/connection.js');
 
 describe('Redis Connection', function () {
 

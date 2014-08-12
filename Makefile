@@ -22,7 +22,7 @@ delint:
 		test/
 
 .PHONY: test
-test: unit
+test: unit integration
 
 .PHONY: unit
 unit:
@@ -32,6 +32,15 @@ unit:
 		--recursive \
 		-R spec \
 		test/unit/
+
+.PHONY: integration
+integration:
+	# Run integration tests with code coverage
+	./node_modules/istanbul/lib/cli.js cover \
+	./node_modules/mocha/bin/_mocha -- \
+		--recursive \
+		-R spec \
+		test/integration/
 
 .PHONY: report
 report:
