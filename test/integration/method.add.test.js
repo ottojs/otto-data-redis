@@ -3,7 +3,7 @@
 
 // Modules
 require('should');
-var connection = require('../../lib/connection.js')();
+var connection = require('../../lib/connection.js');
 var redis      = require('../../lib/index.js');
 
 // Subject

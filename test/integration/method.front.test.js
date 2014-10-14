@@ -4,7 +4,7 @@
 // Modules
 require('should');
 var sinon      = require('sinon');
-var connection = require('../../lib/connection.js')();
+var connection = require('../../lib/connection.js');
 var redis      = require('../../lib/index.js');
 
 // Subject
