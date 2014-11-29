@@ -9,7 +9,7 @@
   },
   "devDependencies" : {
     "jshint"   : "2.5.10",
-    "mocha"    : "1.21.5",
+    "mocha"    : "2.0.1",
     "should"   : "4.0.4",
     "sinon"    : "1.10.3",
     "istanbul" : "0.3.2"
