@@ -4,7 +4,7 @@
   "repository" : "https://github.com/ottojs/otto-data-redis.git",
   "main" : "./lib/index.js",
   "dependencies" : {
-    "hiredis" : "0.1.17",
+    "hiredis" : "0.2.0",
     "redis"   : "0.12.1"
   },
   "devDependencies" : {
