@@ -4,20 +4,20 @@
   "repository" : "https://github.com/ottojs/otto-data-redis.git",
   "main" : "./lib/index.js",
   "dependencies" : {
-    "hiredis" : "0.2.0",
+    "hiredis" : "0.4.1",
     "redis"   : "0.12.1"
   },
   "devDependencies" : {
-    "jshint"   : "2.6.3",
-    "mocha"    : "2.2.0",
-    "should"   : "5.1.0",
-    "sinon"    : "1.13.0",
-    "istanbul" : "0.3.7"
+    "jshint"   : "2.8.0",
+    "mocha"    : "2.2.5",
+    "should"   : "7.0.4",
+    "sinon"    : "1.16.1",
+    "istanbul" : "0.3.18"
   },
   "scripts" : {
     "test" : "make test"
   },
   "engines" : {
-    "node" : "0.10.x"
+    "node" : "0.12.x"
   }
 }
